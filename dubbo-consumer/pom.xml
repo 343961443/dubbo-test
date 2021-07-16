@@ -6,19 +6,26 @@
   <modelVersion>4.0.0</modelVersion>
   <artifactId>dubbo-consumer</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <name>dubbo-consumer</name>
+
+    <name>dubbo-consumer</name>
   <packaging>jar</packaging>
   <parent>
     <groupId>HQJL</groupId>
     <artifactId>dubbo-test</artifactId>
     <version>1.0-SNAPSHOT</version>
   </parent>
+
   <properties>
 
-
+    <skyeye-core.version>2.0.6-SNAPSHOT</skyeye-core.version>
   </properties>
 
   <dependencies>
+    <dependency>
+      <groupId>com.huya.skyeye</groupId>
+      <artifactId>skyeye-core-min</artifactId>
+      <version>${skyeye-core.version}</version>
+    </dependency>
     <dependency>
       <groupId>org.apache.dubbo</groupId>
       <artifactId>dubbo</artifactId>
@@ -34,6 +41,12 @@
       <groupId>HQJL</groupId>
       <artifactId>dubbo-api</artifactId>
       <version>1.0-SNAPSHOT</version>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>1.18.4</version>
       <scope>compile</scope>
     </dependency>
   </dependencies>
