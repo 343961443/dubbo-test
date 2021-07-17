@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 @Component
 @Slf4j
 public class PoolService {
-    @Reference(timeout = 3000)
+    @Reference(timeout = 3000, retries = 0)
     IDemoService demoService;
 
     public void execute() {
@@ -27,7 +27,8 @@ public class PoolService {
             int finalI = i;
             Thread thread = new Thread(() -> {
                 try {
-                    Thread.sleep(3*finalI *1000);
+                    //Thread.sleep(3*finalI *1);
+                    Thread.sleep(1);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }

@@ -15,5 +15,5 @@
     <!-- generate proxy for the remote service, then demoService can be used in the same way as the
     local regular interface -->
     <dubbo:reference id="demoService" check="false" interface="com.api.IDemoService"/>
-    <bean id="worker" class="com.consumer.Worker"/>
+    <bean id="worker" class="com.consumer.WorkerService"/>
 </beans>

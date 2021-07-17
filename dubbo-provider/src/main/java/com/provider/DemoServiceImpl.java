@@ -13,8 +13,13 @@ import java.util.Random;
 public class DemoServiceImpl implements IDemoService {
 
   @Override
-  public int[] getData(ReqData data) {
+  public int[] getData(final ReqData data) {
     DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+    try {
+      Thread.sleep(1);
+    } catch (InterruptedException e) {
+      e.printStackTrace();
+    }
     System.out.println(dateFormat.format(new Date()) + "get Data.");
     return null;
   }

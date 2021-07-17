@@ -15,7 +15,7 @@ import java.util.Collection;
  */
 @Slf4j
 @Component
-public class Worker extends ConsumeWorker<ReqData> {
+public class WorkerService extends ConsumeWorker<ReqData> {
 
     @Reference(timeout = 3000)
     IDemoService demoService;

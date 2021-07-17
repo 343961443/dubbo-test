@@ -17,8 +17,8 @@ public class CleanContentFilter implements Filter {
         try {
             return invoker.invoke(invocation);
         } finally {
-            RpcContext.removeContext();
-            getContext().setFuture(null);
+//            RpcContext.removeContext();
+//            getContext().setFuture(null);
         }
     }
 }
