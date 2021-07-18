@@ -17,13 +17,21 @@ import java.util.Collection;
 @Component
 public class WorkerService extends ConsumeWorker<ReqData> {
 
-    @Reference(timeout = 3000)
+    @Reference(timeout = 2000)
     IDemoService demoService;
+
     @Override
     public void consume(Collection<ReqData> collection) {
-        for (ReqData reqData:collection) {
-            demoService.getData(reqData.setData(new int[1 * 1024 * 1024]));
-            log.error("thread{}=>done", Thread.currentThread().getName());
+        for (ReqData reqData : collection) {
+            try {
+                demoService.getData(reqData.setData(new int[1 * 100 * 1024]));
+            } catch (Exception e) {
+                log.error("id=>{}超时了", reqData.getInteger(), e);
+            } finally {
+                log.error("id=>{},thread{}=>done", reqData.getInteger(), Thread.currentThread().getName());
+            }
+
+
         }
 
     }

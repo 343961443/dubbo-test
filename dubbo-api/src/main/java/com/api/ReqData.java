@@ -1,14 +1,11 @@
 package com.api;
 
 import com.huya.skyeye.core.concurrent.QueueTimeBean;
-import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
-import sun.awt.EventQueueItem;
 
-import java.awt.*;
 import java.io.Serializable;
 
 /**
@@ -20,6 +17,13 @@ import java.io.Serializable;
 @NoArgsConstructor
 @Accessors(chain = true)
 public class ReqData extends QueueTimeBean implements Serializable {
+    private int integer = getNext();
     private int[] data;
+
+    private static volatile int value = 1;
+
+    private static int getNext() {
+        return value++;
+    }
 
 }
