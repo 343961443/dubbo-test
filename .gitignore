@@ -4,3 +4,4 @@ test.json
 rebel.xml
 version.txt
 *.log
+**/target
