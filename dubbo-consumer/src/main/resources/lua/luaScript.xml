@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scripts>
+
+	<script name="setnxAndExpireAndSmembers">
+		local rs1 = redis.call('setex',KEYS[2],KEYS[3],KEYS[4]);
+		local rs2 = redis.call('sadd',KEYS[1],KEYS[2]);
+		if rs2==1 then
+			redis.call('EXPIRE',KEYS[1],KEYS[3]);
+		end;
+		local rs3 = redis.call('smembers',KEYS[1]);
+		return rs3;
+	</script>
+
+</scripts>
