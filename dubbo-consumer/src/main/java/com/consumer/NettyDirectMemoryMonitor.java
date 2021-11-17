@@ -23,7 +23,7 @@ public class NettyDirectMemoryMonitor {
         log.info("init => begin");
         //scheduledExecutorService.scheduleAtFixedRate(() -> directMemReporter(), 1, 1, TimeUnit.SECONDS);
         log.info("init => end");
-        scheduledExecutorService.scheduleAtFixedRate(() -> putQueue(), 3000, 3000, TimeUnit.MILLISECONDS);
+        //scheduledExecutorService.scheduleAtFixedRate(() -> putQueue(), 1000, 100, TimeUnit.MILLISECONDS);
     }
 
     public void putQueue() {

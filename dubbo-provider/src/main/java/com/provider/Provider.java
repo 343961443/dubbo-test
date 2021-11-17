@@ -20,7 +20,7 @@ public class Provider {
     }
     @Configuration
     @EnableDubbo(scanBasePackages = "com.provider")
-    @PropertySource("classpath:dubbo-provider.properties")
+    @PropertySource({"classpath:dubbo-provider.properties"})
     static class ProviderConfiguration {
         @Bean
         public RegistryConfig registryConfig() {

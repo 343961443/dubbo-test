@@ -18,24 +18,25 @@ import java.util.concurrent.TimeUnit;
 @Component
 @Slf4j
 public class PoolService {
-    @Reference(timeout = 3000, retries = 0)
+    @Reference(timeout = 2000, retries = 0)
     IDemoService demoService;
 
     public void execute() {
-        ExecutorService executorService = new ThreadPoolExecutor(10, 10, 5L, TimeUnit.MINUTES, new ArrayBlockingQueue(100000));
-        for (int i = 0; i < 10; i++) {
+        ExecutorService executorService = new ThreadPoolExecutor(3, 3, 5L, TimeUnit.MINUTES, new ArrayBlockingQueue(100000));
+        for (int i = 0; i < 1000000000; i++) {
             int finalI = i;
             Thread thread = new Thread(() -> {
-                try {
+                /*try {
                     //Thread.sleep(3*finalI *1);
                     Thread.sleep(1);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                }
+                }*/
 
                 demoService.getData(new ReqData().setData(new int[1 * 1024 * 1024]));
                 log.error("thread{}=>done", finalI);
             });
+
             thread.setName("thread-" + i);
             executorService.execute(thread);
             //uncomment line below, memory kept by InternalThreadLocalMap will be freed
